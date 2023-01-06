@@ -59,30 +59,31 @@ for name in image_names:
     necrosis_df_current = necrosis_df.loc[necrosis_df["FileName_Original"] == name]
     an_df_current = an_df.loc[an_df["FileName_Original"] == name]
 
-    cells_number = cells_df_current.shape[0] #Count number of rows with same image name
     apoptosis_number = apoptosis_df_current.shape[0]
     necrosis_number = necrosis_df_current.shape[0]
     an_number = an_df_current.shape[0]
+    all_cells_number = cells_df_current.shape[0] #Count number of rows with same image name
+    normal_cells_number = all_cells_number - an_number - necrosis_number - apoptosis_number
 
     #Extract original image number from image name
     image_number,image_type = number_type_from_imagename(name)
 
     #Create df with current data 
-    result_current =  pd.DataFrame({'Image number':[image_number], 'Image name':[name],'Image type':[image_type], 'N Cells':[cells_number], 'N Apoptotic':[apoptosis_number], 
+    result_current =  pd.DataFrame({'Image number':[image_number], 'Image name':[name],'Image type':[image_type], 'N Cells':[normal_cells_number], 'N Apoptotic':[apoptosis_number], 
         'N Necrotic':[necrosis_number], 'N NA':[an_number]})
 
-    current_df_sns = pd.DataFrame({'Image type':[image_type,image_type,image_type,image_type], 'Type':["Cells","Apoptotic","Necrotic","Late Apoptotic"],
-    'Cells number':[cells_number,apoptosis_number,necrosis_number,an_number]})
+    current_df_sns = pd.DataFrame({'Image type':[image_type,image_type,image_type,image_type], 'Type':["Normal Cells","Apoptotic","Necrotic","Late Apoptotic"],
+    'Cells number':[normal_cells_number,apoptosis_number,necrosis_number,an_number]})
 
     #Append current data to result df
     # result_df = result_df.append(result_current)
     result_df = pd.concat([result_current, result_df])
     result_df_sns = pd.concat([current_df_sns,result_df_sns])
 
-# result_df = result_df.sort_values(by=['Image name'])
-# result_sorted_df = result_df.sort_values(by=['Image number'])
+result_df = result_df.sort_values(by=['Image name'])
+result_sorted_df = result_df.sort_values(by=['Image number'])
 
-# data = mean_and_stdev_by_type(result_sorted_df,'ApNec 300-20')
+data = mean_and_stdev_by_type(result_sorted_df,'ApNec 300-20')
 print(result_df_sns)
 
 
