@@ -89,3 +89,5 @@ print(result_df_sns)
 
 sns.barplot(data=result_df_sns, x="Image type", y="Cells number", hue = 'Type', errorbar = 'sd')
 plt.show()
+
+print(data)
