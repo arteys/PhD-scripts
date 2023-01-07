@@ -10,7 +10,7 @@ def number_type_from_imagename(image_name):
         if symbol.isalpha():
             break
     image_number = int(image_name[0:i])
-    image_type = image_name[i:3+i]  #Realy bad solution. Need to fix somehow.
+    image_type = image_name[i:12+i]  #Realy bad solution. Need to fix somehow.
 
     return image_number,image_type
 
@@ -36,15 +36,15 @@ def mean_and_stdev_by_type(dataframe,image_type):
 
 
 # cells_path = "./PhD_scripts/Data examples/CP_AN_table_processing/Cells.csv"
-# cells_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Cells.csv"
-# apoptosis_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Apoptotic_Cells.csv"
-# necrosis_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Necrotic_Cells.csv"
-# an_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Necrotic_Apoptotic_Cells.csv"
+cells_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Cells.csv"
+apoptosis_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Apoptotic_Cells.csv"
+necrosis_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Necrotic_Cells.csv"
+an_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Necrotic_Apoptotic_Cells.csv"
 
-cells_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Cells.csv"
-apoptosis_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Apoptotic_Cells.csv"
-necrosis_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Necrotic_Cells.csv"
-an_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Necrotic_Apoptotic_Cells.csv"
+# cells_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Cells.csv"
+# apoptosis_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Apoptotic_Cells.csv"
+# necrosis_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Necrotic_Cells.csv"
+# an_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Necrotic_Apoptotic_Cells.csv"
 
 cells_df = pd.read_csv(cells_path)
 apoptosis_df = pd.read_csv(apoptosis_path )
