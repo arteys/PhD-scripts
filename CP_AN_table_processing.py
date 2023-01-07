@@ -10,7 +10,7 @@ def number_type_from_imagename(image_name):
         if symbol.isalpha():
             break
     image_number = int(image_name[0:i])
-    image_type = image_name[i:12+i]
+    image_type = image_name[i:3+i]  #Realy bad solution. Need to fix somehow.
 
     return image_number,image_type
 
@@ -36,10 +36,15 @@ def mean_and_stdev_by_type(dataframe,image_type):
 
 
 # cells_path = "./PhD_scripts/Data examples/CP_AN_table_processing/Cells.csv"
-cells_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Cells.csv"
-apoptosis_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Apoptotic_Cells.csv"
-necrosis_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Necrotic_Cells.csv"
-an_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Necrotic_Apoptotic_Cells.csv"
+# cells_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Cells.csv"
+# apoptosis_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Apoptotic_Cells.csv"
+# necrosis_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Necrotic_Cells.csv"
+# an_path = "C:/Users/Modern/Desktop/Python/PhD-scripts/Data examples/CP_AN_table_processing/Necrotic_Apoptotic_Cells.csv"
+
+cells_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Cells.csv"
+apoptosis_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Apoptotic_Cells.csv"
+necrosis_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Necrotic_Cells.csv"
+an_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes/Counted/Necrotic_Apoptotic_Cells.csv"
 
 cells_df = pd.read_csv(cells_path)
 apoptosis_df = pd.read_csv(apoptosis_path )
@@ -72,8 +77,8 @@ for name in image_names:
     result_current =  pd.DataFrame({'Image number':[image_number], 'Image name':[name],'Image type':[image_type], 'N Cells':[normal_cells_number], 'N Apoptotic':[apoptosis_number], 
         'N Necrotic':[necrosis_number], 'N NA':[an_number]})
 
-    current_df_sns = pd.DataFrame({'Image type':[image_type,image_type,image_type,image_type], 'Type':["Normal Cells","Apoptotic","Necrotic","Late Apoptotic"],
-    'Cells number':[normal_cells_number,apoptosis_number,necrosis_number,an_number]})
+    current_df_sns = pd.DataFrame({'Image type':[image_type,image_type,image_type,image_type], 'Type':["Normal Cells","Apoptotic","Late Apoptotic","Necrotic"],
+    'Cells number':[normal_cells_number,apoptosis_number,an_number,necrosis_number]})
 
     #Append current data to result df
     # result_df = result_df.append(result_current)
@@ -83,11 +88,11 @@ for name in image_names:
 result_df = result_df.sort_values(by=['Image name'])
 result_sorted_df = result_df.sort_values(by=['Image number'])
 
-data = mean_and_stdev_by_type(result_sorted_df,'ApNec 300-20')
-print(result_df_sns)
+# data = mean_and_stdev_by_type(result_sorted_df,'ApNec 300-20')
+print(result_sorted_df)
 
 
 sns.barplot(data=result_df_sns, x="Image type", y="Cells number", hue = 'Type', errorbar = 'sd')
 plt.show()
 
-print(data)
+# print(data)
