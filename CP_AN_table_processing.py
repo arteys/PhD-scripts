@@ -25,9 +25,7 @@ def mean_and_stdev_by_type(dataframe,image_type):
     na = current_df["N NA"].mean()
     na_stdev = current_df["N NA"].std()
 
-    necrotic = necrotic - na #Correction on multiple counting
-
-    data = pd.DataFrame({'Cells':[cells], 'Apoptotic':[apoptotic],'Necrotic':[necrotic], 'NA':[na], 'Cells std':[cells_stdev], 
+    data = pd.DataFrame({'All Cells':[cells], 'Apoptotic':[apoptotic],'Necrotic':[necrotic], 'NA':[na], 'Cells std':[cells_stdev], 
         'Apoptotic std':[apoptotic_stdev], 'Necrotic std':[necrotic_stdev], 'NA std':[na_stdev]})
 
     data_round = data.round(0)
@@ -74,7 +72,7 @@ for name in image_names:
     image_number,image_type = number_type_from_imagename(name)
 
     #Create df with current data 
-    result_current =  pd.DataFrame({'Image number':[image_number], 'Image name':[name],'Image type':[image_type], 'N Cells':[normal_cells_number], 'N Apoptotic':[apoptosis_number], 
+    result_current =  pd.DataFrame({'Image number':[image_number], 'Image name':[name],'Image type':[image_type], 'N Cells':[all_cells_number], 'N Apoptotic':[apoptosis_number], 
         'N Necrotic':[necrosis_number], 'N NA':[an_number]})
 
     current_df_sns = pd.DataFrame({'Image type':[image_type,image_type,image_type,image_type], 'Type':["Normal Cells","Apoptotic","Late Apoptotic","Necrotic"],
@@ -88,11 +86,11 @@ for name in image_names:
 result_df = result_df.sort_values(by=['Image name'])
 result_sorted_df = result_df.sort_values(by=['Image number'])
 
-# data = mean_and_stdev_by_type(result_sorted_df,'ApNec 300-20')
-print(result_sorted_df)
+data = mean_and_stdev_by_type(result_sorted_df,'ApNec 600-20')
+# print(result_sorted_df)
 
 
 sns.barplot(data=result_df_sns, x="Image type", y="Cells number", hue = 'Type', errorbar = 'sd')
 plt.show()
 
-# print(data)
+print(data)
