@@ -8,7 +8,11 @@ spheroids_df = pd.read_csv(path)
 
 labels = spheroids_df.columns.values
 
-print(labels)
+spheroids_compact_df = spheroids_df[["ObjectNumber","AreaShape_Area","AreaShape_MeanRadius","AreaShape_FormFactor","Intensity_IntegratedIntensity_Grayscale"]]
+
+# print(labels)
+
+print(spheroids_compact_df.mean()) #IN PIXELS!!
 
 # sns.scatterplot(data=spheroids_df, x="AreaShape_Area", y="AreaShape_Eccentricity", color=".15")
 # sns.kdeplot(data=spheroids_df, x="AreaShape_Area", y="AreaShape_Eccentricity", levels=5, color="b", linewidths=1)
