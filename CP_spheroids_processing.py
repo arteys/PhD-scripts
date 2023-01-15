@@ -41,14 +41,16 @@ ultimate_df = pd.concat(frames_df)
 
 
 # fig, ax =plt.subplots(1,2)
+plt.subplots(figsize=(4, 4))
+
 ax1 = sns.scatterplot(data=ultimate_df, x="AreaShape_EquivalentDiameter", y="AreaShape_FormFactor", hue = "Type")
 # ax2 = sns.scatterplot(data=ultimate_df, x="AreaShape_EquivalentDiameter", y="Intensity_IntegratedIntensity_Grayscale", hue = "Type",ax=ax[1])
-# ax = sns.kdeplot(data=ultimate_df, x="AreaShape_EquivalentDiameter", y="Intensity_IntegratedIntensity_Grayscale", hue = "Type", levels=5, linewidths=1)
+# ax1 = sns.kdeplot(data=ultimate_df, x="AreaShape_EquivalentDiameter", y="Intensity_IntegratedIntensity_Grayscale", hue = "Type", levels=5, linewidths=1)
 # sns.swarmplot(data=ultimate_df, y="AreaShape_EquivalentDiameter", x="AreaShape_FormFactor", hue = "Type")
 # sns.relplot(data=ultimate_df, y="AreaShape_EquivalentDiameter", x="AreaShape_FormFactor", hue = "Type")
 
 
-
+plt.legend(fontsize=10)
 ax1.set(xlabel='Equvalent diameter, μm', ylabel='Form factor')
 ax1.set_aspect('auto')
 
