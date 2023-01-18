@@ -53,12 +53,12 @@ folder_path = fd.askdirectory(parent=root, title='Folder with images')
 # cells_path = "./PhD_scripts/Data examples/CP_AN_table_processing/Cells.csv"
 
 cells_path = folder_path + "/Cells_detected.csv"
-apoptosis_path = folder_path + "/Apoptotic_Cells.csv"
-necrosis_path = folder_path + "/Necrotic_Cells.csv"
+apoptosis_path = folder_path + "/Apoptotic_Cleared.csv"
+necrosis_path = folder_path + "/Necrotic_Cleared.csv"
 an_path = folder_path + "/Necrotic_Apoptotic_Cells.csv"
 
 cells_df = pd.read_csv(cells_path)
-apoptosis_df = pd.read_csv(apoptosis_path )
+apoptosis_df = pd.read_csv(apoptosis_path)
 necrosis_df = pd.read_csv(necrosis_path)
 an_df = pd.read_csv(an_path)
 # columns_names_arr = cells_df.columns.values
