@@ -18,13 +18,13 @@ spheroids_df_2["AreaShape_EquivalentDiameter"] = spheroids_df["AreaShape_Equival
 spheroids_df_3["AreaShape_EquivalentDiameter"] = spheroids_df["AreaShape_EquivalentDiameter"]/3.02
 
 spheroids_compact_df = spheroids_df[["ObjectNumber","AreaShape_Area","AreaShape_EquivalentDiameter",
-    "AreaShape_FormFactor","AreaShape_MeanRadius","Intensity_IntegratedIntensity_Grayscale"]]
+    "AreaShape_FormFactor","AreaShape_MeanRadius","Intensity_MeanIntensity_Grayscale"]]
 
 spheroids_compact_df_2 = spheroids_df_2[["ObjectNumber","AreaShape_Area","AreaShape_EquivalentDiameter",
-    "AreaShape_FormFactor","AreaShape_MeanRadius","Intensity_IntegratedIntensity_Grayscale"]]
+    "AreaShape_FormFactor","AreaShape_MeanRadius","Intensity_MeanIntensity_Grayscale"]]
 
 spheroids_compact_df_3 = spheroids_df_3[["ObjectNumber","AreaShape_Area","AreaShape_EquivalentDiameter",
-    "AreaShape_FormFactor","AreaShape_MeanRadius","Intensity_IntegratedIntensity_Grayscale"]]
+    "AreaShape_FormFactor","AreaShape_MeanRadius","Intensity_MeanIntensity_Grayscale"]]
 
 
 spheroids_compact_df["Type"] = "EDC 600-20"
