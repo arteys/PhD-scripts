@@ -9,8 +9,10 @@ import cv2
 # cells_path = "C:/Users/Modern/Desktop/Thesis big files/27-12-2022 FH on Matrixes S (600-20)/Tiff/Test.tif"
 # cells_path = "C:/Users/Modern/Desktop/Thesis big files/Test images/4 Membrane-Dish Co-Cultivation Vero-FH.tif"
 # cells_path = "C:/Users/Modern/Desktop/Thesis big files/Test images/Composite_test.tif"
-# cells_path = "C:/Users/Modern/Desktop/Thesis big files/Test images/5 FH S AN 3d.tif" 
+# cells_path = "C:/Users/Modern/Desktop/Thesis big files/Test images/CoCult Vero_Memb_FH.tif" 
 
+# cells_path = "C:/Users/Modern/Desktop/Confocal/31-01-2023 Vero + Dye (Belskaya)/EL-930/Images/43 EL-930 4 405 channel 3d.tif"
+cells_path = "C:/Users/Modern/Desktop/Confocal/31-01-2023 Vero + Dye (Belskaya)/EL-973/Images/51 EL-973 405 channel 3d.tif"
 
 mylist = []
 loaded,layers = cv2.imreadmulti(mats = mylist, filename = cells_path, flags = cv2.IMREAD_ANYCOLOR )
@@ -21,7 +23,7 @@ print(np.shape(cells_np))
 cells = cells_np[:,:,:,1]
 
 
-# viewer = napari.view_image(cells_np,scale=(8, 1, 1), rgb=True)
-viewer = napari.view_image(cells,scale=(19, 0.8, 0.8), channel_axis=1)
+viewer = napari.view_image(cells,scale=(1, 1, 1))
+# viewer = napari.view_image(cells_np,scale=(13, 1, 1), channel_axis=1)
 
-# napari.run()
+napari.run()
